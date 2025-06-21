@@ -1,0 +1,18 @@
+FROM node:lts-alpine
+
+# Set the working directory
+WORKDIR /app-dir
+
+# Copy package files
+COPY package*.json ./
+
+# Installaing dependencies
+RUN npm install
+
+#Copy Application code
+COPY patient-service.js .
+
+EXPOSE 3000
+
+# Start the service
+CMD ["node", "patient-service.js"]
